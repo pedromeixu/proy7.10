@@ -1,0 +1,17 @@
+    <!DOCTYPE html>
+    <html lang="es" xmlns:th="http://www.thymeleaf.org">
+      <head> 
+        <th:block th:insert="~{fragment.html :: cabecera}"></th:block> 
+        <title>MyApp</title>
+      </head>
+      <body>
+        <h1>Editar cuenta</h1>
+        <form method="post" action="#" th:action="@{/cuentas/edit/submit}"
+                th:object="${cuentaForm}">
+                <label>Iban (solo lectura):<input type="text" id="iban" readonly th:field="*{iban}" /> </label><br/>
+                <label>Alias:<input type="text" id="alias" th:field="*{alias}" /></label><br/>
+                <input type="hidden" id="saldo" th:field="*{saldo}" />
+                <input class="btn btn-primary" type="submit" value="Enviar" />
+        </form>
+      </body>
+    </html>

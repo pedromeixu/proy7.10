@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head> 
+    <th:block th:insert="~{fragment.html :: cabecera}"></th:block> 
+    <title>MyApp</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+    <h1>Nueva cuenta</h1>
+    <form method="post" action="#" th:action="@{/cuentas/new/submit}"
+            th:object="${cuentaForm}">
+            <label>Iban:<input type="text" id="iban" th:field="*{iban}" /> </label><br/>
+            <label>Alias:<input type="text" id="alias" th:field="*{alias}" /></label><br/>
+            <!-- <label>Saldo:<input type="text" id="saldo" th:field="*{saldo}" /></label><br/> -->
+            <input class="btn btn-primary" type="submit" value="Enviar" />
+    </form>
+      </div></div>
+  </body>
+</html>

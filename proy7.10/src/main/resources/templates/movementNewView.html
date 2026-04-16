@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head> 
+    <th:block th:insert="~{fragment.html :: cabecera}"></th:block> 
+    <title>MyApp</title>
+  </head>
+  <body>
+    <h1>Nuevo movimiento</h1>
+    <form method="post" action="#" th:action="@{/movimientos/new/submit}"
+            th:object="${movimientoForm}">
+            <input type="hidden" th:field="*{cuenta}"/> 
+            <!-- <label>Cuenta
+              <select name="iban" th:field="*{cuenta}"> 
+                <option th:each="cuenta : ${listaCuentas}"
+                  th:value="${cuenta.iban}" th:text="${cuenta.alias}">
+                </option>
+              </select>
+              </label><br/> -->
+            <label>Importe:<input type="text" id="importe" th:field="*{importe}" /></label><br/>
+            <input class="btn btn-primary" type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>

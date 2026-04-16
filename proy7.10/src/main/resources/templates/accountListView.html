@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head> 
+    <th:block th:insert="~{fragment.html :: cabecera}"></th:block> 
+    <title>MyApp</title>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- BARRA SUPERIOR -->
+    <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+        <h1>Cuentas</h1>
+
+        <div>
+            <!-- SOLO ADMIN: Gestión de usuarios -->
+            <a class="btn btn-warning me-2"
+               sec:authorize="hasRole('ADMIN')"
+               th:href="@{/usuarios/listAll}">
+               Gestión de usuarios
+            </a>
+
+            <!-- LOGIN si NO está autenticado -->
+            <a class="btn btn-primary me-2"
+               sec:authorize="isAnonymous()"
+               th:href="@{/login}">
+               Login
+            </a>
+
+            <!-- LOGOUT si está autenticado -->
+            <a class="btn btn-danger"
+               sec:authorize="isAuthenticated()"
+               th:href="@{/logout}">
+               Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- TABLA DE CUENTAS -->
+    <div class="row justify-content-center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>IBAN</th>
+                    <th>Alias</th>
+                    <th>Saldo</th>
+                    <th>Editar</th>
+                    <th>Borrar</th>
+                    <th>Movimientos</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="cuenta : ${listaCuentas}">
+                    <td th:text="${cuenta.iban}">IBAN</td>
+                    <td th:text="${cuenta.alias}">Alias</td>
+                    <td th:text="${cuenta.saldo}">saldo</td>
+
+                    <!-- EDITAR y BORRAR solo para ADMIN y TITULAR -->
+                    <td>
+                        <a class="btn btn-info"
+                           sec:authorize="hasAnyRole('ADMIN','TITULAR')"
+                           th:href="@{/cuentas/edit/{iban}(iban=${cuenta.iban})}">
+                           Editar
+                        </a>
+                    </td>
+
+                    <td>
+                        <a class="btn btn-danger"
+                           sec:authorize="hasAnyRole('ADMIN','TITULAR')"
+                           th:href="@{/cuentas/delete/{iban}(iban=${cuenta.iban})}">
+                           Borrar
+                        </a>
+                    </td>
+
+                    <!-- Movimientos: visible para todos -->
+                    <td>
+                        <a class="btn btn-success"
+                           th:href="@{/movimientos/{iban}(iban=${cuenta.iban})}">
+                           Lista Movs
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- NUEVA CUENTA: solo ADMIN y TITULAR -->
+    <a class="btn btn-primary"
+       sec:authorize="hasAnyRole('ADMIN','TITULAR')"
+       th:href="@{/cuentas/new}">
+       Nueva cuenta
+    </a>
+
+    <!-- MENSAJE DE ERROR -->
+    <p th:if="${msgError!=null}" class="alert alert-danger mt-3">
+        <span th:text="${msgError}">mensaje de error</span>
+    </p>
+
+</div>
+</body>
+</html>
