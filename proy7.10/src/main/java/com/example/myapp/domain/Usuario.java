@@ -23,7 +23,7 @@ public class Usuario {
     private String nombre;
 
     @Size(min = 4)
-    private String contrasena;
+    private String password;
 
     private Rol rol;
 }

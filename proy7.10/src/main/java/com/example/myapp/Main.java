@@ -40,21 +40,21 @@ public class Main implements CommandLineRunner{
         // Usuario ADMIN
         Usuario admin = new Usuario();
         admin.setNombre("admin");
-        admin.setContrasena(passwordEncoder.encode("admin123"));
+        admin.setPassword(passwordEncoder.encode("admin123"));
         admin.setRol(Rol.ADMIN);
         usuarioService.saveUsuario(admin);
 
         // Usuario TITULAR
         Usuario titular = new Usuario();
         titular.setNombre("juan");
-        titular.setContrasena(passwordEncoder.encode("juan1234"));
+        titular.setPassword(passwordEncoder.encode("juan1234"));
         titular.setRol(Rol.TITULAR);
         usuarioService.saveUsuario(titular);
 
         // Usuario USUARIO
         Usuario usuario = new Usuario();
         usuario.setNombre("maria");
-        usuario.setContrasena(passwordEncoder.encode("maria123"));
+        usuario.setPassword(passwordEncoder.encode("maria123"));
         usuario.setRol(Rol.USUARIO);
         usuarioService.saveUsuario(usuario);
 
