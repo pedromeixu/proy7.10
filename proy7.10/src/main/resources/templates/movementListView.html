@@ -1,29 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head> 
+<head> 
     <th:block th:insert="~{fragment.html :: cabecera}"></th:block> 
-    <title>MyApp</title>
-  </head>
+    <title>MyApp - Movimientos</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/tables.css">
+    <link rel="stylesheet" href="/css/layout.css">
+</head>
+
 <body>
-  <div class="container">
+
+<div class="container">
     <div class="row justify-content-center">
-      <h1>Movimientos</h1>
-      <table class="table table-striped">
-        <thead>
-          <tr><th>IBAN</th><th>Fecha</th><th>Importe</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="movim : ${listaMovimientos}">
-            <td th:text="${movim.cuenta.iban}">IBAN</td>
-            <td th:text="${#temporals.format(movim.fecha, 'dd-MM-yyyy HH:mm')}"></td>
-            <!-- <td th:text="${movim.fecha}">fecha</td> -->
-            <td th:text="${movim.importe}">importe</td>            
-          </tr>
-        </tbody>
-      </table>
+
+        <h1>Movimientos</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>IBAN</th>
+                    <th>Fecha</th>
+                    <th>Importe</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="movim : ${listaMovimientos}">
+                    <td th:text="${movim.cuenta.iban}">IBAN</td>
+                    <td th:text="${#temporals.format(movim.fecha, 'dd-MM-yyyy HH:mm')}"></td>
+                    <td th:text="${movim.importe}">importe</td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
-      <a class="btn btn-primary" th:href="@{/movimientos/new/{iban}(iban=${cuenta.iban})}">Nuevo movimiento</a><br/> 
-  </div>
-    </body>
+
+    <a class="btn btn-primary" th:href="@{/movimientos/new/{iban}(iban=${cuenta.iban})}">
+        Nuevo movimiento
+    </a>
+</div>
+
+</body>
 </html>

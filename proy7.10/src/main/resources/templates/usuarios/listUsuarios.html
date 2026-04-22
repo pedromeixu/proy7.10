@@ -3,40 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/tables.css">
+    <link rel="stylesheet" href="/css/layout.css">
 </head>
 <body>
 
-<h2>Usuarios</h2>
+<div class="container">
 
-<a th:href="@{/usuarios/new}">Nuevo Usuario</a>
-<br/><br/>
+    <h2>Usuarios</h2>
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Rol</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
+    <a class="btn-new" th:href="@{/usuarios/new}">Nuevo Usuario</a>
 
-    <tbody>
-        <tr th:each="u : ${listaUsuarios}">
-            <td th:text="${u.id}"></td>
-            <td th:text="${u.nombre}"></td>
-            <td th:text="${u.rol}"></td>
-            <td>
-                <a th:href="@{'/usuarios/edit/' + ${u.id}}">Editar</a>
-                |
-                <a th:href="@{'/usuarios/delete/' + ${u.id}}"
-                   onclick="return confirm('¿Seguro que deseas eliminar este usuario?')">
-                   Eliminar
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="u : ${listaUsuarios}">
+                <td th:text="${u.id}"></td>
+                <td th:text="${u.nombre}"></td>
+                <td th:text="${u.rol}"></td>
+                <td>
+                    <a class="btn-edit" th:href="@{'/usuarios/edit/' + ${u.id}}">Editar</a>
+                    |
+                    <a class="btn-delete"
+                       th:href="@{'/usuarios/delete/' + ${u.id}}"
+                       onclick="return confirm('¿Seguro que deseas eliminar este usuario?')">
+                       Eliminar
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
 
 </body>
 </html>

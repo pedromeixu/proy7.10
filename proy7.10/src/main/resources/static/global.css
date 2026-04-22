@@ -1,0 +1,64 @@
+/* ===== GLOBAL THEME (BLACK & WHITE) ===== */
+
+body {
+    background: #ffffff;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    color: #000000;
+    font-weight: 600;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Botones corporativos */
+.btn-primary {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #333333;
+}
+
+.btn-danger {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background: #444444;
+}
+
+.btn-success {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-success:hover {
+    background: #333333;
+}
+
+.btn-warning {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-warning:hover {
+    background: #444444;
+}

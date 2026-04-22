@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario Usuario</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/tables.css">
+    <link rel="stylesheet" href="/css/layout.css">
 </head>
 <body>
 
@@ -14,11 +18,9 @@
 
     <label>Nombre:</label>
     <input type="text" th:field="*{nombre}" required minlength="3" />
-    <br/><br/>
 
     <label>Contraseña:</label>
     <input type="password" th:field="*{password}" required minlength="4" />
-    <br/><br/>
 
     <label>Rol:</label>
     <select th:field="*{rol}">
@@ -27,7 +29,6 @@
                 th:text="${r}">
         </option>
     </select>
-    <br/><br/>
 
     <button type="submit">Guardar</button>
     <a th:href="@{/usuarios/listAll}">Cancelar</a>

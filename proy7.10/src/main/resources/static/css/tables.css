@@ -1,0 +1,23 @@
+/* ===== TABLES ===== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #ffffff;
+    border: 1px solid #000000;
+}
+
+thead {
+    background: #000000;
+    color: #ffffff;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #000000;
+}
+
+tr:hover {
+    background: #f2f2f2;
+}

@@ -32,9 +32,10 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/login", "/css/**", "/js/**").permitAll()
+                .requestMatchers("/movimientos/new/**").hasAnyRole("ADMIN", "TITULAR")
+                .requestMatchers("/cuentas", "/cuentas/", "/movimientos/**").permitAll()
                 .requestMatchers("/usuarios/**").hasRole("ADMIN")
                 .requestMatchers("/cuentas/new", "/cuentas/edit/**", "/cuentas/delete/**").hasAnyRole("ADMIN", "TITULAR")
-                .requestMatchers("/cuentas/**", "/movimientos/**").authenticated()
                 .anyRequest().denyAll()
             )
             .formLogin(form -> form
@@ -46,8 +47,8 @@ public class SecurityConfig {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
-            );
-
+            )
+            .csrf(csrf -> csrf.disable());
         return http.build();
     }
 }

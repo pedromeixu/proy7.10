@@ -1,0 +1,35 @@
+/* ===== FORMS ===== */
+
+form {
+    background: #ffffff;
+    padding: 30px 40px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    width: 450px;
+    margin: 20px auto;
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    font-weight: bold;
+    color: #000000;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #000000;
+}
+
+input:focus,
+select:focus {
+    border-color: #333333;
+    outline: none;
+}
